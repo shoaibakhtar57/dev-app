@@ -8,6 +8,7 @@ class SignUpController extends GetxController {
   final repo = AuthRepo();
 
   final authController = Get.find<AuthController>();
+
   late ChattyUser newUser;
 
   late String newPassword;
@@ -25,10 +26,13 @@ class SignUpController extends GetxController {
     isLoading = true;
     update([kSigningUp]);
 
-    final user = await repo.signUpAndtoFirestore(newUser, newPassword);
-
-    if (user != null) {
-      authController.setCurrentUser(user);
-    }
+    await repo.signUpAndtoFirestore(newUser, newPassword).then((value) {
+      authController.setCurrentUser(value!);
+      this.isLoading = false;
+      update([kSigningUp]);
+    }).onError((error, stackTrace) {
+      this.isLoading = false;
+      update([kSigningUp]);
+    });
   }
 }

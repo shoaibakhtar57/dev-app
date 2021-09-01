@@ -13,7 +13,9 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<AuthController>(
-      initState: (state) {},
+      initState: (state) {
+        controller.persistanceLogin();
+      },
       id: kRootAuthenticator,
       builder: (con) => con.currentUser == null ? SignIn() : HomeModule(),
     );

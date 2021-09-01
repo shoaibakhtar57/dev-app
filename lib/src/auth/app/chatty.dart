@@ -9,7 +9,7 @@ class Chatty extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       getPages: Routes.getPages,
-      initialRoute: Routes.sign_in,
+      initialRoute: Routes.splash,
     );
   }
 }

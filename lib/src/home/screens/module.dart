@@ -8,6 +8,6 @@ class HomeModule extends StatelessWidget {
   final controller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(body: Center(child: Text('Home module')));
   }
 }
