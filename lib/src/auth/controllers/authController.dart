@@ -26,6 +26,8 @@ class AuthController extends GetxController {
     });
   }
 
+  //I am dumb - haroon
+
   Future<void> persistanceLogin() async {
     await repo.persistanceLogin().then((value) {
       this.currentUser = value;
